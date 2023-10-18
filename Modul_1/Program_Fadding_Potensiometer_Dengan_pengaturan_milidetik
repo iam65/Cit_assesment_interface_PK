@@ -1,0 +1,48 @@
+int led1=11;  
+int led2=10;  
+int led3=9; 
+int i;
+int pot=A0; 
+int data;
+
+void setup(){ 
+pinMode(led1,OUTPUT);
+pinMode(led2,OUTPUT);
+pinMode(led3,OUTPUT);
+pinMode(pot,INPUT); 
+} 
+void loop(){ 
+data=analogRead(pot); 
+    data=data/4;
+
+  for (i=0; i<=data; i+=51){ 
+analogWrite(led1,i);
+delay(100); 
+ } 
+ for (i=data; i>=0; i-=51){ 
+analogWrite(led1,i); 
+delay(100); 
+ }
+
+ delay(500);
+
+for (i=0; i<=data; i+=51){ 
+analogWrite(led2,i);
+delay(100); 
+ } 
+ for (i=data; i>=0; i-=51){ 
+analogWrite(led2,i); 
+delay(100); 
+ }
+ 
+ delay(500);
+
+ for (i=0; i<=data; i+=51){ 
+analogWrite(led3,i);
+delay(100); 
+ } 
+ for (i=data; i>=0; i-=51){ 
+analogWrite(led3,i); 
+delay(100); 
+ }
+}
