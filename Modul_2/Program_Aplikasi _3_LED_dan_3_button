@@ -1,0 +1,103 @@
+#include <LiquidCrystal_I2C.h>
+int but1 = 5;
+int but2 = 6;
+int but3 = 7;
+int a, b, c, i;
+int ln, cl;
+int z = LOW;
+int led = 11;
+int led1 = 10;
+int led2 = 9;
+int pot=A0; 
+int data;
+int MODE;
+
+
+LiquidCrystal_I2C lcd(0x27,16,2); // set the LCD address to 0x3F for a 16
+
+void setup() {
+ lcd.init();
+ lcd.clear();
+ lcd.backlight(); // Make sure backlight is on
+ pinMode(but1, INPUT);
+ pinMode(but2, INPUT);
+ pinMode(but3, INPUT);
+ pinMode(led, OUTPUT);
+ pinMode(led1, OUTPUT);
+ pinMode(led2, OUTPUT);
+ pinMode(pot,INPUT);
+ ln = 1;
+    lcd.setCursor(6,0);
+    lcd.print(ln);
+ MODE = 0;
+}
+
+
+void loop() {
+   // Print a message on both lines of the LCD.
+    a = digitalRead(but1);
+    b = digitalRead(but2);
+    c = digitalRead(but3);
+    data=analogRead(pot); 
+    data=data/4;
+  	if (c == LOW && MODE > 1){
+		MODE = 0;
+      	goto Led;
+    }
+  	if (c == LOW){
+	    MODE++;
+    }
+
+
+  
+    if (a == LOW){
+      delay(500);
+      ln = ln + 1;
+      lcd.clear();
+      lcd.setCursor(6,0);
+      lcd.print(ln);
+    }
+    if (b == LOW){
+      delay(500);
+      ln = ln - 1;
+      lcd.clear();
+      lcd.setCursor(6,0);
+      lcd.print(ln);
+    }
+
+
+	Led:
+  if (MODE == 1){
+        for (i=0; i<=data; i+=51){ 
+          analogWrite(led,i);
+          delay(100); 
+        } 
+        for (i=data; i>=0; i-=51){ 
+          analogWrite(led,i); 
+          delay(100); 
+        }
+
+            delay(500);
+
+        for (i=0; i<=data; i+=51){ 
+          analogWrite(led1,i);
+          delay(100); 
+        } 
+        for (i=data; i>=0; i-=51){ 
+          analogWrite(led1,i); 
+          delay(100); 
+        }
+ 
+            delay(500);
+
+        for (i=0; i<=data; i+=51){ 
+          analogWrite(led2,i);
+          delay(100); 
+        } 
+        for (i=data; i>=0; i-=51){ 
+          analogWrite(led2,i); 
+          delay(100); 
+        }
+  }
+    	
+ }
