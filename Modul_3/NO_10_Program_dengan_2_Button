@@ -1,1 +1,26 @@
+int buttonPin1 = 5;  // Pin untuk push button 1
+int buttonPin2 = 6;  // Pin untuk push button 2
+int ldrPin = A0;      // Pin analog untuk LDR
+int photodiodePin = A1; // Pin analog untuk fotodioda
 
+void setup() {
+  Serial.begin(9600);
+  pinMode(buttonPin1, INPUT_PULLUP);
+  pinMode(buttonPin2, INPUT_PULLUP);
+}
+
+void loop() {
+  if (digitalRead(buttonPin1) == LOW) {
+    int ldrValue = analogRead(ldrPin);
+    Serial.print("Nilai LDR: ");
+    Serial.println(ldrValue);
+    delay(1000);  // Tunggu 1 detik agar tidak terlalu cepat membaca
+  }
+
+  if (digitalRead(buttonPin2) == LOW) {
+    int photodiodeValue = analogRead(photodiodePin);
+    Serial.print("Nilai Fotodioda: ");
+    Serial.println(photodiodeValue);
+    delay(1000);  // Tunggu 1 detik agar tidak terlalu cepat membaca
+  }
+}
