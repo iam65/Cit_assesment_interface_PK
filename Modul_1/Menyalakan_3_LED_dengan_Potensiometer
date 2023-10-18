@@ -1,0 +1,18 @@
+int led=11;
+int led1=10;
+int led2=9;
+int pot=A0; 
+int data; 
+
+  void setup(){ 
+    pinMode(led,OUTPUT); 
+    pinMode(pot,INPUT); 
+} 
+
+  void loop(){ 
+    data=analogRead(pot); 
+    data=data/4; 
+    analogWrite(led,data); 
+    analogWrite(led1,data); 
+    analogWrite(led2,data); 
+}
