@@ -1,0 +1,47 @@
+int led1=11;  
+int led2=10;  
+int led3=9; 
+int i;
+int button = 2;
+
+void setup(){ 
+pinMode(led1,OUTPUT);
+pinMode(led2,OUTPUT);
+pinMode(led3,OUTPUT);
+pinMode(button,INPUT);
+} 
+void loop(){
+if (digitalRead(button)==HIGH){
+for (i=0; i<=255; i+=51){ 
+analogWrite(led1,i);
+delay(100); 
+ } 
+ for (i=255; i>=0; i-=51){ 
+analogWrite(led1,i); 
+delay(100); 
+ }
+
+ delay(500);
+
+
+for (i=0; i<=255; i+=51){ 
+analogWrite(led2,i);
+delay(100); 
+ } 
+ for (i=255; i>=0; i-=51){ 
+analogWrite(led2,i); 
+delay(100); 
+ }
+
+ delay(500);
+
+ for (i=0; i<=255; i+=51){ 
+analogWrite(led3,i);
+delay(100); 
+ } 
+ for (i=255; i>=0; i-=51){ 
+analogWrite(led3,i); 
+delay(100); 
+ }
+}
+}
