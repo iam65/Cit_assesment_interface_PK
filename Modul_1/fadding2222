@@ -1,5 +1,5 @@
 const int potentiometerPin = A0; // Pin untuk potensiometer
-const int ledPins[] = {8, 9, 10, 11}; // Pin untuk LED
+const int ledPins[] = {3, 4, 5, 6}; // Pin untuk LED
 int potValue = 0; // Nilai potensiometer
 
 void setup() {
