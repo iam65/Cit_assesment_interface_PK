@@ -1,0 +1,39 @@
+const int potentiometerPin = A0; // Pin untuk potensiometer
+const int ledPins[] = {8, 9, 10, 11}; // Pin untuk LED
+int potValue = 0; // Nilai potensiometer
+
+void setup() {
+  for (int i = 0; i < 4; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
+}
+
+void loop() {
+  potValue = analogRead(potentiometerPin);
+
+  if (potValue >= 0 && potValue < 200) {
+    turnOnLed(0);
+  } else if (potValue >= 200 && potValue < 400) {
+    turnOnLed(0);
+    turnOnLed(1);
+  } else if (potValue >= 400 && potValue < 600) {
+    turnOnLed(0);
+    turnOnLed(1);
+    turnOnLed(2);
+  } else if (potValue >= 600) {
+    turnOnLed(0);
+    turnOnLed(1);
+    turnOnLed(2);
+    turnOnLed(3);
+  }
+}
+
+void turnOnLed(int ledIndex) {
+  for (int i = 0; i < 4; i++) {
+    if (i == ledIndex) {
+      digitalWrite(ledPins[i], HIGH);
+    } else {
+      digitalWrite(ledPins[i], LOW);
+    }
+  }
+}
