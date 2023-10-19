@@ -1,22 +1,12 @@
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(32,16,2);
 
-int led1 = 9;
-int led2 = 10;
-int led3 = 11;
-int led4 = 8;
-int pot = A0;
+
 int photo = A1;
-int but1 = 3;
 int MODE = 0;
-int buz = 12;
+int buz = 10;
 
 void setup(){
-  pinMode (led1, OUTPUT);
-  pinMode (led2, OUTPUT);
-  pinMode (led3, OUTPUT);
-  pinMode (pot, INPUT);
-  pinMode (but1, INPUT);
   pinMode (photo, INPUT);
   pinMode (buz, OUTPUT);
   Serial.begin(9600);
@@ -24,6 +14,7 @@ void setup(){
   lcd.init();
   lcd.backlight();
   lcd.init();
+
 }
 
 void loop() {
@@ -39,7 +30,7 @@ void loop() {
   }
   else {
     digitalWrite(buz, LOW);
-    lcd.setCursor(0, 0);
+    lcd.setCursor(0, 1);
     lcd.print("LIGHT OFF");
   }
   
