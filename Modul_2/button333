@@ -1,0 +1,41 @@
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(32,16,2);
+
+int led1 = 9;
+int led2 = 10;
+int led3 = 11;
+int led4 = 8;
+int pot = A0;
+int but1 = 3;
+int MODE = 0;
+
+void setup(){
+  pinMode (led1, OUTPUT);
+  pinMode (led2, OUTPUT);
+  pinMode (led3, OUTPUT);
+  pinMode (pot, INPUT);
+  pinMode (but1, INPUT);
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  lcd.init();
+  lcd.backlight();
+  lcd.init();
+}
+
+void loop() {
+
+  int pus = digitalRead(but1);
+ 
+  if (pus == LOW){
+    MODE++;
+    delay(2000);
+  }
+  
+  if (MODE == 1){
+    lcd.setCursor(0, 0);
+    lcd.print("6702220116");
+  }
+  else if (MODE == 2) {
+    lcd.setCursor(0, 1);
+    lcd.print("M akmal");
+  }
