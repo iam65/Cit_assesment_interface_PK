@@ -13,17 +13,17 @@ void setup()
 void loop()
 {
   digitalWrite(LED1, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
+  delay(1000); // Ditunggu delay selama 1 detik
   digitalWrite(LED1, LOW);
-  delay(500); // Wait for 1000 millisecond(s)
+  delay(500); // Ditunggu delay selama 1 detik
   
   digitalWrite(LED2, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
+  delay(1000); // Ditunggu delay selama 1 detik
   digitalWrite(LED2, LOW);
-  delay(500); // Wait for 1000 millisecond(s)
+  delay(500); // Ditunggu delay selama 1 detik
   
   digitalWrite(LED3, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
+  delay(1000); // Ditunggu delay selama 1 detik
   digitalWrite(LED3, LOW);
-  delay(500); // Wait for 1000 millisecond(s)
+  delay(500); // Ditunggu delay selama 1 detik
 }
