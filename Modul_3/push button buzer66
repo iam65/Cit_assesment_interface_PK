@@ -1,1 +1,46 @@
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(32,16,2);
 
+int led1 = 9;
+int led2 = 10;
+int led3 = 11;
+int led4 = 8;
+int pot = A0;
+int photo = A1;
+int but1 = 3;
+int MODE = 0;
+int buz = 12;
+
+void setup(){
+  pinMode (led1, OUTPUT);
+  pinMode (led2, OUTPUT);
+  pinMode (led3, OUTPUT);
+  pinMode (pot, INPUT);
+  pinMode (but1, INPUT);
+  pinMode (photo, INPUT);
+  pinMode (buz, OUTPUT);
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  lcd.init();
+  lcd.backlight();
+  lcd.init();
+}
+
+void loop() {
+
+  	int li = analogRead(photo);
+  	Serial.print("Pht");
+  	Serial.println(li);
+  
+  if (li >= 20){
+    digitalWrite(buz, HIGH);
+    lcd.setCursor(0, 0);
+    lcd.print("LIGHT ON");
+  }
+  else {
+    digitalWrite(buz, LOW);
+    lcd.setCursor(0, 0);
+    lcd.print("LIGHT OFF");
+  }
+  
+}
